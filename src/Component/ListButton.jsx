@@ -5,19 +5,59 @@ const ListButton = ({
   leftAll,
   handleLeftToRight,
   handleRightToLeft,
+  leftDisabledStatus = false,
+  rightDisabledStatus = false,
+  leftDisableOnly = false,
+  rightDisableOnly = false,
 }) => {
+  console.log(leftDisableOnly, rightDisableOnly);
+
   return (
     <div className="border flex flex-col w-[200px]">
-      <button className="border cursor-pointer p-2" onClick={handleRightToLeft}>
+      <button
+        className={` border cursor-pointer ${
+          leftDisableOnly
+            ? "cursor-not-allowed opacity-50"
+            : "hover:bg-gray-200"
+        }
+      `}
+        onClick={handleRightToLeft}
+        disabled={leftDisableOnly}
+      >
         left
       </button>
-      <button className="border cursor-pointer p-2" onClick={handleLeftToRight}>
+      <button
+        className={` border cursor-pointer ${
+          rightDisableOnly
+            ? "cursor-not-allowed opacity-50"
+            : "hover:bg-gray-200"
+        }
+      `}
+        onClick={handleLeftToRight}
+        disabled={rightDisableOnly}
+      >
         right
       </button>
-      <button className="border cursor-pointer p-2" onClick={leftAll}>
+      <button
+        className={` border cursor-pointer ${
+          rightDisabledStatus
+            ? "cursor-not-allowed opacity-50"
+            : "hover:bg-gray-200"
+        }
+      `}
+        onClick={leftAll}
+      >
         leftAll
       </button>
-      <button className="border cursor-pointer p-2" onClick={rightAll}>
+      <button
+        className={` border cursor-pointer ${
+          leftDisabledStatus
+            ? "cursor-not-allowed opacity-50"
+            : "hover:bg-gray-200"
+        }
+      `}
+        onClick={rightAll}
+      >
         rightAll
       </button>
     </div>

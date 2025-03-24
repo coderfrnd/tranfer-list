@@ -16,6 +16,7 @@ const ListContainer = () => {
     { id: 7, checked: false, itemName: "TS" },
     { id: 8, checked: false, itemName: "Tailwind" },
   ]);
+  const [leftRightDisable, setleftRightDisable] = useState(false);
   function rightAll() {
     setRightArray([...rightArray, ...leftArray]);
     setLeftArray([]);
@@ -69,6 +70,10 @@ const ListContainer = () => {
         leftAll={leftAll}
         handleLeftToRight={handleLeftToRight}
         handleRightToLeft={handleRightToLeft}
+        leftDisabledStatus={leftArray.length == 0 ? true : false}
+        rightDisabledStatus={rightArray.length == 0 ? true : false}
+        leftDisableOnly={leftArray.find((ele) => ele.checked === true)}
+        rightDisableOnly={rightArray.find((ele) => ele.checked === true)}
       />
       <Container
         language={rightArray}
